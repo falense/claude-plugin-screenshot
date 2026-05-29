@@ -6,3 +6,11 @@
 # Python
 __pycache__/
 *.pyc
+.venv/
+*.egg-info/
+
+# Tool output
+.screenshots/
+
+# UV
+uv.lock
