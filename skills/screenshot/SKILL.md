@@ -13,32 +13,32 @@ Capture screenshots of web pages using headless Chromium.
 
 ## Usage
 
-All commands must be run from the plugin root directory. Use `${CLAUDE_PLUGIN_ROOT}` to reference it:
+Use `uv run --project ${CLAUDE_PLUGIN_ROOT}` to run the tool. This resolves the package from the plugin directory while keeping your current working directory, so screenshots are saved in your project.
 
 ```bash
-cd ${CLAUDE_PLUGIN_ROOT} && uv run screenshot <url>
+uv run --project ${CLAUDE_PLUGIN_ROOT} screenshot <url>
 ```
 
 ### Basic screenshot
 
 ```bash
-cd ${CLAUDE_PLUGIN_ROOT} && uv run screenshot https://example.com
+uv run --project ${CLAUDE_PLUGIN_ROOT} screenshot https://example.com
 ```
 
 ### With options
 
 ```bash
-cd ${CLAUDE_PLUGIN_ROOT} && uv run screenshot https://example.com --preset mobile --full-page --dark
+uv run --project ${CLAUDE_PLUGIN_ROOT} screenshot https://example.com --preset mobile --full-page --dark
 ```
 
 ### Authenticated pages
 
 ```bash
 # First: save a session (opens browser for manual login)
-cd ${CLAUDE_PLUGIN_ROOT} && uv run screenshot login mysite https://example.com/login
+uv run --project ${CLAUDE_PLUGIN_ROOT} screenshot login mysite https://example.com/login
 
 # Then: use the session
-cd ${CLAUDE_PLUGIN_ROOT} && uv run screenshot https://example.com/dashboard --session mysite
+uv run --project ${CLAUDE_PLUGIN_ROOT} screenshot https://example.com/dashboard --session mysite
 ```
 
 ## Available viewports
@@ -47,7 +47,7 @@ desktop (1280x720), laptop (1440x900), tablet (768x1024),
 tablet-landscape (1024x768), mobile (375x667), mobile-large (414x896).
 
 ```bash
-cd ${CLAUDE_PLUGIN_ROOT} && uv run screenshot presets
+uv run --project ${CLAUDE_PLUGIN_ROOT} screenshot presets
 ```
 
 ## Output
