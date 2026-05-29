@@ -13,28 +13,32 @@ Capture screenshots of web pages using headless Chromium.
 
 ## Usage
 
-Run the `screenshot` CLI tool via `uv run screenshot <url>`.
+All commands must be run from the plugin root directory. Use `${CLAUDE_PLUGIN_ROOT}` to reference it:
+
+```bash
+cd ${CLAUDE_PLUGIN_ROOT} && uv run screenshot <url>
+```
 
 ### Basic screenshot
 
 ```bash
-uv run screenshot https://example.com
+cd ${CLAUDE_PLUGIN_ROOT} && uv run screenshot https://example.com
 ```
 
 ### With options
 
 ```bash
-uv run screenshot https://example.com --preset mobile --full-page --dark
+cd ${CLAUDE_PLUGIN_ROOT} && uv run screenshot https://example.com --preset mobile --full-page --dark
 ```
 
 ### Authenticated pages
 
 ```bash
 # First: save a session (opens browser for manual login)
-uv run screenshot login mysite https://example.com/login
+cd ${CLAUDE_PLUGIN_ROOT} && uv run screenshot login mysite https://example.com/login
 
 # Then: use the session
-uv run screenshot https://example.com/dashboard --session mysite
+cd ${CLAUDE_PLUGIN_ROOT} && uv run screenshot https://example.com/dashboard --session mysite
 ```
 
 ## Available viewports
@@ -42,11 +46,13 @@ uv run screenshot https://example.com/dashboard --session mysite
 desktop (1280x720), laptop (1440x900), tablet (768x1024),
 tablet-landscape (1024x768), mobile (375x667), mobile-large (414x896).
 
-Use `uv run screenshot presets` to list all presets.
+```bash
+cd ${CLAUDE_PLUGIN_ROOT} && uv run screenshot presets
+```
 
 ## Output
 
-Screenshots are saved to `.screenshots/` with auto-generated filenames.
+Screenshots are saved to `.screenshots/` in the current working directory with auto-generated filenames.
 Use `-o path.png` for an explicit output path.
 The tool prints the absolute path of the saved file to stdout.
 
@@ -57,10 +63,7 @@ The tool prints the absolute path of the saved file to stdout.
 - `--click SELECTOR` — click an element before capture
 - `--full-page` — capture the entire scrollable page
 
-## Installation
+## Notes
 
-The tool auto-installs Chromium on first run. Run from the plugin directory:
-
-```bash
-cd /path/to/claude-plugin-screenshot && uv run screenshot <url>
-```
+- Chromium is auto-installed on first run.
+- `${CLAUDE_PLUGIN_ROOT}` is set by Claude Code and points to the plugin's install directory.
