@@ -6,13 +6,7 @@ Supports viewport presets, authenticated sessions, dark mode, full-page capture,
 
 ## Install
 
-As a Claude Code plugin:
-
-```
-/plugin install screenshot@dig-experimental
-```
-
-Or clone and run directly:
+Clone and run directly:
 
 ```bash
 git clone https://github.com/falense/claude-plugin-screenshot.git
@@ -21,6 +15,26 @@ uv run screenshot https://example.com
 ```
 
 Chromium is installed automatically on first run.
+
+### As a Claude Code plugin
+
+If your organization uses a [Claude Code marketplace](https://docs.anthropic.com/en/docs/claude-code/plugins), you can add this plugin to your marketplace's `marketplace.json`:
+
+```json
+{
+  "name": "screenshot",
+  "source": {
+    "source": "github",
+    "repo": "falense/claude-plugin-screenshot"
+  },
+  "description": "Capture screenshots of web pages using Playwright",
+  "author": {
+    "name": "Sondre"
+  }
+}
+```
+
+Then install with `/plugin install screenshot@<your-marketplace>`.
 
 ## Usage
 
